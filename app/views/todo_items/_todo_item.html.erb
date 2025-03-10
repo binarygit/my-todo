@@ -5,6 +5,10 @@
       <strong><%= todo_item.content %></strong>
     <% end %>
 
+    <%= link_to edit_todo_item_url(todo_item), data: { turbo_stream: true } do %>
+        <%= image_tag('pencil.svg', width: 20, height: 20, style: "margin-left: 5px") %>
+      <% end %>
+
     <%= button_to todo_item_url(todo_item), { method: :delete, class: :unstyled, title: "todo: Delete a todo" } do %>
       <%= image_tag('trash.svg', width: 20, height: 20) %>
     <% end %>

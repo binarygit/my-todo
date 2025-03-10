@@ -2,12 +2,20 @@
 
 <% content_for :title, "Todo items" %>
 
-<h1>Todo items</h1>
+<div style="display: flex">
+  <h1>Todo items</h1>
+  <div style="margin-left: 20px">
+    <p>Filters:</p>
+    <%= link_to "All todos", todo_items_url %>
+    <%= link_to "Completed todos", todo_items_url(completed: true) %>
+    <%= link_to "Pending todos", todo_items_url(pending: true) %>
+  </div>
+</div>
+
+<hr>
 
 <div id="todo_items">
-  <% @todo_items.each do |todo_item| %>
-    <%= render todo_item %>
-  <% end %>
+  <%= render(partial: 'todo_item', collection: @todo_items) %>
 </div>
 
 <h2>Add new item</h2>

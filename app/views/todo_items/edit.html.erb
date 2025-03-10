@@ -2,7 +2,10 @@
 
 <h1>Editing todo item</h1>
 
-<%= render "form", todo_item: @todo_item %>
+
+<%= turbo_frame_tag 'edit-todo-form' do %>
+  <%= render "form", todo_item: @todo_item %>
+<% end %>
 
 <br>
 

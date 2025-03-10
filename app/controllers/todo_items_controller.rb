@@ -3,7 +3,13 @@ class TodoItemsController < ApplicationController
 
   # GET /todo_items or /todo_items.json
   def index
-    @todo_items = TodoItem.all
+    @todo_items = if params[:completed]
+      TodoItem.completed
+    elsif params[:pending]
+      TodoItem.pending
+    else
+      TodoItem.all
+    end
   end
 
   # GET /todo_items/1 or /todo_items/1.json
@@ -17,6 +23,13 @@ class TodoItemsController < ApplicationController
 
   # GET /todo_items/1/edit
   def edit
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(helpers.dom_id(@todo_item), partial: "todo_items/form",
+          locals: { todo_item: @todo_item })
+      end
+      format.html
+    end
   end
 
   # POST /todo_items or /todo_items.json
@@ -42,6 +55,10 @@ class TodoItemsController < ApplicationController
   def update
     respond_to do |format|
       if @todo_item.update(todo_item_params)
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(helpers.dom_id(@todo_item), partial: "todo_items/todo_item",
+            locals: { todo_item: @todo_item })
+        end
         format.html { redirect_to @todo_item, notice: "Todo item was successfully updated." }
         format.json { render :show, status: :ok, location: @todo_item }
       else
