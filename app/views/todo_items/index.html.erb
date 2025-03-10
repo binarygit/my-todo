@@ -7,12 +7,10 @@
 <div id="todo_items">
   <% @todo_items.each do |todo_item| %>
     <%= render todo_item %>
-    <p>
-      <%= link_to "Show this todo item", todo_item %>
-    </p>
   <% end %>
 </div>
 
+<h2>Add new item</h2>
 <%= turbo_frame_tag "new-todo-item", src: new_todo_item_path do %>
   loading
 <% end %>

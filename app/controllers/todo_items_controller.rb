@@ -25,6 +25,10 @@ class TodoItemsController < ApplicationController
 
     respond_to do |format|
       if @todo_item.save
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append('todo_items', partial: "todo_items/todo_item",
+            locals: { todo_item: @todo_item })
+        end
         format.html { redirect_to @todo_item, notice: "Todo item was successfully created." }
         format.json { render :show, status: :created, location: @todo_item }
       else
