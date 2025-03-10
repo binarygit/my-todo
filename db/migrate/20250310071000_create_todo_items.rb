@@ -1,6 +1,6 @@
-class CreateTodoitems < ActiveRecord::Migration[8.0]
+class CreateTodoItems < ActiveRecord::Migration[8.0]
   def change
-    create_table :todoitems do |t|
+    create_table :todo_items do |t|
       t.string :content
       t.boolean :completed
 
