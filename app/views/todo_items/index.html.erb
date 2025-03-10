@@ -13,4 +13,6 @@
   <% end %>
 </div>
 
-<%= link_to "New todo item", new_todo_item_path %>
+<%= turbo_frame_tag "new-todo-item", src: new_todo_item_path do %>
+  loading
+<% end %>

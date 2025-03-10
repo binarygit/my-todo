@@ -2,7 +2,9 @@
 
 <h1>New todo item</h1>
 
-<%= render "form", todo_item: @todo_item %>
+<%= turbo_frame_tag "new-todo-item" do %>
+  <%= render "form", todo_item: @todo_item %>
+<% end %>
 
 <br>
 
