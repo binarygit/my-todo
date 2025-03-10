@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+```
+git clone git@github.com:binarygit/my-todo.git
+cd my-todo
+bundle
+rails db:migrate
+```
 
-* Ruby version
+## Run server
 
-* System dependencies
+```
+bin/dev
+```
 
-* Configuration
+## Details
 
-* Database creation
+This is a pretty simple app. It has a single model called TodoItem and
+one controller TodoItemsController.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You can create, edit, destroy, complete todo_items from the root page
+`/todo_items` itself. All thanks to Turbo!
