@@ -1,12 +1,6 @@
 <div id="<%= dom_id todo_item %>">
-  <p>
-    <strong>Content:</strong>
-    <%= todo_item.content %>
-  </p>
-
-  <p>
-    <strong>Completed:</strong>
-    <%= todo_item.completed %>
-  </p>
-
+  <%= form_with model: todo_item do |f| %>
+    <%= f.check_box :completed, data: { controller: 'put-request', 'put-request-url-value': todo_item_url(todo_item), action: "change->put-request#start" } %>
+    <strong><%= todo_item.content %></strong>
+  <% end %>
 </div>
