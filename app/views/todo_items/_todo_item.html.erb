@@ -1,6 +1,12 @@
 <div id="<%= dom_id todo_item %>">
-  <%= form_with model: todo_item do |f| %>
-    <%= f.check_box :completed, data: { controller: 'put-request', 'put-request-url-value': todo_item_url(todo_item), action: "change->put-request#start" } %>
-    <strong><%= todo_item.content %></strong>
-  <% end %>
+  <div style="display: flex">
+    <%= form_with model: todo_item do |f| %>
+      <%= f.check_box :completed, data: { controller: 'put-request', 'put-request-url-value': todo_item_url(todo_item), action: "change->put-request#start" } %>
+      <strong><%= todo_item.content %></strong>
+    <% end %>
+
+    <%= button_to todo_item_url(todo_item), { method: :delete, class: :unstyled, title: "todo: Delete a todo" } do %>
+      <%= image_tag('trash.svg', width: 20, height: 20) %>
+    <% end %>
+  </div>
 </div>

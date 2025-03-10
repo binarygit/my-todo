@@ -8,3 +8,9 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.unstyled {
+  all: unset;
+  cursor: pointer;
+  margin-left: 5px;
+}
